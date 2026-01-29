@@ -1,0 +1,64 @@
+# Maven
+/target/
+/.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# OpenIDE / IntelliJ
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Environment files
+.env
+
+# IDE specific
+/.idea/
+/*.ipr
+/*.iws
+
+# Spring Boot
+/spring.log
+
+# Generated sources
+/generated-sources/
+
+# Target
+/target/
+
+# Byte Buddy / Mockito agent dumps
+*.dump
+
+# Maven wrapper
+mvnw
+mvnw.cmd
+
+# JetBrains
+out/
