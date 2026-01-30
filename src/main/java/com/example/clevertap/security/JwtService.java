@@ -5,7 +5,9 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import jakarta.annotation.PostConstruct;
 
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 
@@ -18,6 +20,17 @@ public class JwtService {
 
     private Key key() {
         return Keys.hmacShaKeyFor(secret.getBytes());
+    }
+
+    @PostConstruct
+    public void validateSecret() {
+        if (secret == null || secret.isBlank()) {
+            throw new IllegalStateException("JWT secret must be set and non-empty. Set 'security.jwt.secret' env var.");
+        }
+        byte[] bytes = secret.getBytes(StandardCharsets.UTF_8);
+        if (bytes.length < 32) {
+            throw new IllegalStateException("JWT secret is too short: must be at least 256 bits (32 bytes) for HMAC-SHA algorithms.");
+        }
     }
 
     public String generateToken(String username) {
